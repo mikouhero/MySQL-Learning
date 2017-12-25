@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Seeker Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Base Css Files -->
+    <link href="/static/admin/assets/libs/jqueryui/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/fontello/css/fontello.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/animate-css/animate.min.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/nifty-modal/css/component.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/magnific-popup/magnific-popup.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/ios7-switch/ios7-switch.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/pace/pace.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/bootstrap-datepicker/css/datepicker.css" rel="stylesheet"/>
+    <link href="/static/admin/assets/libs/jquery-icheck/skins/all.css" rel="stylesheet"/>
+    <!-- Code Highlighter for Demo -->
+    <link href="/static/admin/assets/libs/prettify/github.css" rel="stylesheet"/>
+
+    <!-- Extra CSS Libraries Start -->
+    <link href="/static/admin/assets/libs/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/admin/assets/libs/morrischart/morris.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/admin/assets/libs/jquery-jvectormap/css/jquery-jvectormap-1.2.2.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="/static/admin/assets/libs/jquery-clock/clock.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/admin/assets/libs/bootstrap-calendar/css/bic_calendar.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/admin/assets/libs/sortable/sortable-theme-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/admin/assets/libs/jquery-weather/simpleweather.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/admin/assets/libs/bootstrap-xeditable/css/bootstrap-editable.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="/static/admin/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <!-- Extra CSS Libraries End -->
+    <link href="/static/admin/assets/css/style-responsive.css" rel="stylesheet"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/admin/assets/js/html5shiv.js"></script>
+    <script src="/static/admin/assets/js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="shortcut icon" href="/static/admin/assets/img/favicon.ico">
+</head>
+<body class="fixed-left">
+<!-- Modal Start -->
+<!-- Modal Task Progress -->
+<div class="md-modal md-3d-flip-vertical" id="task-progress">
+    <div class="md-content">
+        <h3><strong>Seeker Demo</strong></h3>
+        <div>
+            <p class="h2">IT.XDL教学使用.转载请注明出处</p>
+            <p class="text-center">
+                <button class="btn btn-danger btn-lg md-close">Close</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Logout -->
+<div class="md-modal md-just-me" id="logout-modal">
+    <div class="md-content">
+        <h3><strong>登出</strong> Logout</h3>
+        <div>
+            <p class="text-center">
+                你确定要退出Seeker Demo系统?
+                <br>
+                Are you sure want to logout from this Seeker Demo system?
+            </p>
+            <p class="text-center">
+                <button class="btn btn-primary md-close">NO . 我要返回</button>
+                <a href="{:url('admin/index/index')}" class="btn btn-danger md-close">Yeah . 我要退出</a>
+            </p>
+        </div>
+    </div>
+</div><!-- Modal End -->
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Top Bar Start -->
+    <div class="topbar">
+        <div class="topbar-left">
+            <div class="logo">
+                <h1><a href="{:url('admin/index/index')}"><img src="/static/admin/assets/img/logo.png" alt="Logo"></a></h1>
+            </div>
+            <button class="button-menu-mobile open-left">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- Button mobile view to collapse sidebar menu -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-collapse2">
+                    <ul class="nav navbar-nav hidden-xs">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th"></i></a>
+                            <div class="dropdown-menu grid-dropdown">
+                                <div class="row stacked">
+                                    <div class="col-xs-4">
+                                        <a href="javascript:void(0)" data-app="notes-app" data-status="active"><i
+                                                class="icon-edit"></i>笔记</a>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="javascript:void(0)" data-app="todo-app" data-status="active"><i
+                                                class="icon-check"></i>清单列表</a>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="javascript:void(0)" data-app="calc" data-status="inactive"><i
+                                                class="fa fa-calculator"></i>计算器</a>
+                                    </div>
+                                </div>
+                                <div class="row stacked">
+                                    <div class="col-xs-4">
+                                        <a href="javascript:void(0)" data-app="weather-widget" data-status="active"><i
+                                                class="icon-cloud-3"></i>天气</a>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="javascript:void(0)" data-app="calendar-widget2" data-status="active"><i
+                                                class="icon-calendar"></i>日历</a>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <a href="javascript:void(0)" data-app="stock-app" data-status="inactive"><i
+                                                class="icon-chart-line"></i>行情数据</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right top-navbar">
+                        <li class="dropdown iconify hide-phone">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i><span
+                                    class="label label-danger absolute">4</span></a>
+                            <ul class="dropdown-menu dropdown-message">
+                                <li class="dropdown-header notif-header"><i class="icon-bell-2"></i> 新通知<a
+                                        class="pull-right" href="#"><i class="fa fa-cog"></i></a></li>
+                                <li class="unread">
+                                    <a href="#">
+                                        <p><strong>John Doe</strong> Uploaded a photo
+                                            <strong>&#34;DSC000254.jpg&#34;</strong>
+                                            <br/><i>2 minutes ago</i>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="unread">
+                                    <a href="#">
+                                        <p><strong>John Doe</strong> Created an photo album
+                                            <strong>&#34;Fappening&#34;</strong>
+                                            <br/><i>8 minutes ago</i>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p><strong>John Malkovich</strong> Added 3 products
+                                            <br/><i>3 hours ago</i>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p><strong>Sonata Arctica</strong> Send you a message <strong>&#34;Lorem ipsum
+                                            dolor...&#34;</strong>
+                                            <br/><i>12 hours ago</i>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p><strong>Johnny Depp</strong> Updated his avatar
+                                            <br/><i>Yesterday</i>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="dropdown-footer">
+                                    <div class="btn-group btn-group-justified">
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-sm btn-primary"><i class="icon-ccw-1"></i>
+                                                Refresh</a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-sm btn-danger"><i class="icon-trash-3"></i> Clear
+                                                All</a>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="#" class="btn btn-sm btn-success">See All <i
+                                                    class="icon-right-open-2"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown iconify hide-phone"><a href="#" onclick="javascript:toggle_fullscreen()"><i
+                                class="icon-resize-full-2"></i></a></li>
+                        <li class="dropdown topbar-profile">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                                    class="rounded-image topbar-profile-image"><img
+                                    src="/static/index/face/batman.jpg"></span> Allen <strong>Huang</strong> <i
+                                    class="fa fa-caret-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">个人主页</a></li>
+                                <li><a href="#">修改密码</a></li>
+                                <li><a href="#">资料设置</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="icon-help-2"></i> 帮助</a></li>
+                                <li><a href="lockscreen.html"><i class="icon-lock-1"></i> 离开锁定</a></li>
+                                <li><a class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i>
+                                    登出系统</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    <!-- Top Bar End -->
+    <!-- Left Sidebar Start -->
+    <div class="left side-menu">
+        <div class="sidebar-inner slimscrollleft">
+            <!-- Search form -->
+            <form role="search" class="navbar-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                    <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+            <!--- Profile -->
+            <div class="profile-info">
+                <div class="col-xs-4">
+                    <a data-toggle="tooltip" title="See task progress" class="md-trigger" data-modal="task-progress"><img
+                            src="/static/index/face/batman.jpg" class="img-responsive rounded-image profile-image"></a>
+                </div>
+                <div class="col-xs-8">
+                    <div class="profile-text">Welcome <b>Huang</b></div>
+                    <div class="profile-buttons">
+                        <a href="javascript:void(0)"><i class="fa fa-envelope-o pulse"></i></a>
+                        <a class="md-trigger" data-modal="logout-modal" title="Sign Out"><i
+                                class="fa fa-power-off text-red-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--- Divider -->
+            <div class="clearfix"></div>
+            <hr class="divider"/>
+            <div class="clearfix"></div>
+            <!--- Divider -->
+            <div id="sidebar-menu">
+                <ul>
+                    <li class="has_sub"><a href="javascript:void(0);"><i class="icon-home-3"></i><span>分类管理</span>
+                        <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+                        <ul>
+                            <li><a href="{:url('admin/categorys/index')}" class="active"><span>分类列表 </span></a></li>
+                            <li><a href=""><span>分类树列表</span></a></li>
+                            <li><a href="{:url('admin/categorys/create')}"><span>分类添加</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub"><a href="javascript:void(0);"><i
+                            class="icon-feather"></i><span>用户管理</span> <span class="pull-right"><i
+                            class="fa fa-angle-down"></i></span></a>
+                        <ul>
+                            <li><a href="{:url('admin/user/index')}"><span>用户列表</span></a></li>
+                            <li><a href="{:url('admin/con2/func2')}"><span>用户添加</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has_sub"><a href="javascript:void(0);"><i
+                            class="icon-feather"></i><span>角色管理</span> <span class="pull-right"><i
+                            class="fa fa-angle-down"></i></span></a>
+                        <ul>
+                            <li><a href="{:url('admin/con2/func1')}"><span>角色列表</span></a></li>
+                            <li><a href="{:url('admin/con2/func2')}"><span>角色添加</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li class="has_sub"><a href="javascript:void(0);"><i
+                            class="icon-feather"></i><span>节点管理</span> <span class="pull-right"><i
+                            class="fa fa-angle-down"></i></span></a>
+                        <ul>
+                            <li><a href="{:url('admin/con2/func1')}"><span>功能 C</span></a></li>
+                            <li><a href="{:url('admin/con2/func2')}"><span>功能 D</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            <br><br><br>
+        </div>
+    </div>
+    <!-- Left Sidebar End -->
+{block name="main"}
+    <!-- Start right content -->
+    <div class="content-page">
+        <!-- ============================================================== -->
+        <!-- Start Content here -->
+        <!-- ============================================================== -->
+        <div class="content">
+            <!-- Start info box -->
+            <div class="row top-summary">
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget green-1 animated fadeInDown">
+                        <div class="widget-content padding">
+                            <div class="widget-icon">
+                                <i class="icon-globe-inv"></i>
+                            </div>
+                            <div class="text-box">
+                                <p class="maindata">TOTAL <b>浏览量</b></p>
+                                <h2><span class="animate-number" data-value="111111111" data-duration="3000">0</span>
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <i class="fa fa-caret-up rel-change"></i> <b>39%</b> 增长率
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget darkblue-2 animated fadeInDown">
+                        <div class="widget-content padding">
+                            <div class="widget-icon">
+                                <i class="icon-bag"></i>
+                            </div>
+                            <div class="text-box">
+                                <p class="maindata">TOTAL <b>销售量</b></p>
+                                <h2><span class="animate-number" data-value="99999" data-duration="3000">0</span></h2>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <i class="fa fa-caret-down rel-change"></i> <b>11%</b> 增长率
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget pink-1 animated fadeInDown">
+                        <div class="widget-content padding">
+                            <div class="widget-icon">
+                                <i class="fa fa-dollar"></i>
+                            </div>
+                            <div class="text-box">
+                                <p class="maindata">TOTAL <b>产出金额</b></p>
+                                <h2>$<span class="animate-number" data-value="88888.8" data-duration="3000">0</span>
+                                </h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <i class="fa fa-caret-down rel-change"></i> <b>7%</b> 增长率
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="widget lightblue-1 animated fadeInDown">
+                        <div class="widget-content padding">
+                            <div class="widget-icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="text-box">
+                                <p class="maindata">TOTAL <b>注册用户</b></p>
+                                <h2><span class="animate-number" data-value="555555" data-duration="3000">0</span></h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <i class="fa fa-caret-up rel-change"></i> <b>6%</b> 增长率
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of info box -->
+
+            <div class="row">
+                <div class="col-lg-8 portlets">
+                    <div id="website-statistics1" class="widget">
+                        <div class="widget-header transparent">
+                            <h2><i class="icon-chart-line"></i> <strong>用户</strong> 增长率</h2>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
+                                    <i class="fa fa-cogs"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <div id="website-statistic" class="statistic-chart">
+                                <div class="row stacked">
+                                    <div class="col-sm-12">
+                                        <div class="toolbar">
+                                            <div class="pull-left">
+                                                <div class="btn-group">
+                                                    <a href="#" class="btn btn-default btn-xs">Daily</a>
+                                                    <a href="#" class="btn btn-default btn-xs active">Monthly</a>
+                                                    <a href="#" class="btn btn-default btn-xs">Yearly</a>
+                                                </div>
+                                            </div>
+                                            <div class="pull-right">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-default btn-xs dropdown-toggle"
+                                                       data-toggle="dropdown">
+                                                        Export <i class="icon-down-open-2"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu pull-right" role="menu">
+                                                        <li><a href="#">Export as PDF</a></li>
+                                                        <li><a href="#">Export as CSV</a></li>
+                                                        <li><a href="#">Export as PNG</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#">Separated link</a></li>
+                                                    </ul>
+                                                </div>
+                                                <a href="#" class="btn btn-primary btn-xs"><i
+                                                        class="icon-cog-2"></i></a>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div id="morris-home" class="morris-chart" style="height: 270px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 portlets">
+                    <div class="widget darkblue-3">
+                        <div class="widget-header transparent">
+                            <h2><strong>服务器</strong> 状态</h2>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
+                                    <i class="fa fa-cogs"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <div id="website-statistic2" class="statistic-chart">
+
+                                <div class="col-sm-12 stacked">
+                                    <h4><i class="fa fa-circle-o text-green-1"></i> Server Loads</h4>
+                                    <div class="col-sm-8 status-data">
+
+                                        <div class="col-xs-12">
+                                            <div class="row stacked">
+                                                <div class="col-xs-4 text-center right-border">
+                                                    Processes<br>
+                                                    <span class="animate-number" data-value="322"
+                                                          data-duration="3000">0</span>
+                                                </div>
+                                                <div class="col-xs-4 text-center right-border">
+                                                    Connections<br>
+                                                    <span class="animate-number" data-value="4789" data-duration="3000">0</span>
+                                                </div>
+                                                <div class="col-xs-4 text-center">
+                                                    Avg. Load<br>
+                                                    <span class="animate-number" data-value="76"
+                                                          data-duration="3000">0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="progress progress-xs">
+                                            <div style="width: 72%" aria-valuemax="100" aria-valuemin="0"
+                                                 aria-valuenow="72" role="progressbar" class="progress-bar bg-orange-2"
+                                                 title="Average Load: 76%" data-placement="right" data-toggle="tooltip">
+                                                <span class="sr-only">72% Complete (success)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 text-center">
+                                        <div class="ws-load echart" data-percent="50"><span class="percent"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div id="home-chart-2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 portlets">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <h2><i class="icon-chart-pie-1"></i> <strong>最新订单</strong></h2>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
+                                    <i class="fa fa-cogs"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <div id="morris-bar-home" class="morris-chart" style="height: 170px;"></div>
+
+                            <div class="clearfix"></div>
+                            <div id="sales-report" class="collapse in hidden-xs">
+                                <div class="table-responsive">
+                                    <table data-sortable class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th width="70">No</th>
+                                            <th data-sortable="false" width="40"><input type="checkbox"
+                                                                                        id="select-all-rows"></th>
+                                            <th width="120">Order ID</th>
+                                            <th>Buyer</th>
+                                            <th width="100">Status</th>
+                                            <th width="150">Location</th>
+                                            <th width="120">Total</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0021</td>
+                                            <td><a href="#">John Doe</a></td>
+                                            <td><span class="label label-primary">Order</span></td>
+                                            <td>Yogyakarta, ID</td>
+                                            <td><strong class="text-primary">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0022</td>
+                                            <td><a href="#">Johnny Depp</a></td>
+                                            <td><span class="label label-success">Payment</span></td>
+                                            <td>London, UK</td>
+                                            <td><strong class="text-success">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0023</td>
+                                            <td><a href="#">Scarlett Johansson</a></td>
+                                            <td><span class="label label-success">Payment</span></td>
+                                            <td>Canbera, AU</td>
+                                            <td><strong class="text-success">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0024</td>
+                                            <td><a href="#">Hanna Barbara</a></td>
+                                            <td><span class="label label-danger">Cancel</span></td>
+                                            <td>Bali, ID</td>
+                                            <td><strong class="text-danger">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0025</td>
+                                            <td><a href="#">Ali Larter</a></td>
+                                            <td><span class="label label-primary">Order</span></td>
+                                            <td>Bandung, ID</td>
+                                            <td><strong class="text-primary">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0026</td>
+                                            <td><a href="#">Willy Wonka</a></td>
+                                            <td><span class="label label-danger">Cancel</span></td>
+                                            <td>Semarang, ID</td>
+                                            <td><strong class="text-danger">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0027</td>
+                                            <td><a href="#">Chris Isaac</a></td>
+                                            <td><span class="label label-warning">Waiting</span></td>
+                                            <td>New York, US</td>
+                                            <td><strong class="text-warning">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0028</td>
+                                            <td><a href="#">Jenny Doe</a></td>
+                                            <td><span class="label label-primary">Order</span></td>
+                                            <td>Boston, US</td>
+                                            <td><strong class="text-primary">&#36; 1,245</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td><input type="checkbox" class="rows-check"></td>
+                                            <td>#0029</td>
+                                            <td><a href="#">Ban ki moon</a></td>
+                                            <td><span class="label label-danger">Cancel</span></td>
+                                            <td>Boston, US</td>
+                                            <td><strong class="text-danger">&#36; 1,245</strong></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 portlets">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div id="todo-app" class="widget">
+                                <div class="widget-header centered">
+                                    <div class="left-btn"><a class="btn btn-sm btn-default add-todo"><i
+                                            class="fa fa-plus"></i></a></div>
+                                    <h2>任务清单列表</h2>
+                                    <div class="additional-btn">
+                                        <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                        <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                                class="icon-publish"></i></a>
+                                        <a href="#" class="widget-maximize hidden"><i
+                                                class="icon-resize-full-1"></i></a>
+                                        <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                        <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                                    </div>
+                                </div>
+                                <div class="widget-content padding-sm">
+                                    <ul class="todo-list">
+                                        <li>
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Generate monthly sales report for John</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                            <span class="todo-tags pull-right">
+													<div class="label label-success">New</div>
+												</span>
+                                        </li>
+                                        <li class="high">
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Mail those reports to John</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                        </li>
+                                        <li>
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Don't forget to send those reports to John</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                        </li>
+                                        <li class="medium">
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">If you forgot, go back to office to pick them up</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                            <span class="todo-tags pull-right">
+													<div class="label label-info">Today</div>
+												</span>
+                                        </li>
+                                        <li class="low">
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Deliver reports by hand to John</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                        </li>
+                                        <li>
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Say John that you are sorry</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                        </li>
+                                        <li>
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Beg for your job...</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                            <span class="todo-tags pull-right">
+													<div class="label label-danger">Important</div>
+												</span>
+                                        </li>
+                                        <li>
+                                            <span class="check-icon"><input type="checkbox"/></span>
+                                            <span class="todo-item">Look for a new job</span>
+                                            <span class="todo-options pull-right">
+													<a href="javascript:void(0)" class="todo-delete"><i
+                                                            class="icon-cancel-3"></i></a>
+												</span>
+                                            <span class="todo-tags pull-right">
+													<div class="label label-warning"><i class="icon-search"></i></div>
+												</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 portlets">
+                    <div id="weather-widget" class="widget">
+                        <div class="widget-header transparent">
+                            <h2><strong>天气</strong> 信息</h2>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
+                                    <i class="fa fa-cogs"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div id="weather" class="widget-content">
+
+                        </div>
+                        <i class="wi-day-rain-mix"></i>
+                        <button class="js-geolocation btn btn-sm btn-default" style="display: none;">Use Your Location
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 portlets">
+                    <div id="calendar-widget2" class="widget blue-1">
+                        <div class="widget-header transparent">
+                            <h2><strong>工作</strong> 日历</h2>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div id="calendar-box2" class="widget-content col-sm-12">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 portlets">
+                    <div id="calc" class="widget darkblue-2">
+                        <div class="widget-header">
+                            <div class="additional-btn left-toolbar">
+                                <div class="btn-group">
+                                    <a class="additional-icon" id="dropdownMenu2" data-toggle="dropdown">
+                                        Calculator <i class="fa fa-angle-down"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                        <li><a href="#">Save</a></li>
+                                        <li><a href="#">Export</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Quit</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div id="calculator" class="widget-content">
+                            <div class="calc-top col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-3"><span class="calc-clean">C</span></div>
+                                    <div class="col-xs-9">
+                                        <div class="calc-screen"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="calc-keys col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-3"><span>7</span></div>
+                                    <div class="col-xs-3"><span>8</span></div>
+                                    <div class="col-xs-3"><span>9</span></div>
+                                    <div class="col-xs-3"><span class="calc-operator">+</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3"><span>4</span></div>
+                                    <div class="col-xs-3"><span>5</span></div>
+                                    <div class="col-xs-3"><span>6</span></div>
+                                    <div class="col-xs-3"><span class="calc-operator">-</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3"><span>1</span></div>
+                                    <div class="col-xs-3"><span>2</span></div>
+                                    <div class="col-xs-3"><span>3</span></div>
+                                    <div class="col-xs-3"><span class="calc-operator">÷</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3"><span>0</span></div>
+                                    <div class="col-xs-3"><span>.</span></div>
+                                    <div class="col-xs-3"><span class="calc-eval">=</span></div>
+                                    <div class="col-xs-3"><span class="calc-operator">x</span></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 col-md-6 portlets">
+                    <!-- <div id="stock-widget" class="widget">
+                        <div class="widget-header transparent">
+                            <h2><strong>Realtime</strong> Stock Chart</h2>
+                            <div class="additional-btn">
+                                <a href="#" onclick="fetchData()" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <h4 id="stock-title"><strong>Google Inc</strong> Stock Chart</h4>
+                            <div class="stock-options pull-right btn-group">
+                                <a class="btn btn-sm btn-default active" href="javascript:void(0)" data-stock="GOOG">GOOGLE</a>
+                                <a class="btn btn-sm btn-default" href="javascript:void(0)" data-stock="AMZN">AMAZON</a>
+                                <a class="btn btn-sm btn-default" href="javascript:void(0)" data-stock="^IXIC">NASDAQ</a>
+                                <a class="btn btn-sm btn-default" href="javascript:void(0)" data-stock="^GSPC">S&P</a>
+                            </div>
+                            <div id="stock-chart"></div>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="col-lg-4 col-md-6 portlets">
+                    <div id="stock-app" class="widget green-3">
+                        <div class="widget-header transparent">
+                            <h2><strong>Stock</strong> Markets</h2>
+                            <div class="additional-btn">
+                                <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
+                                <a class="hidden" id="dropdownMenu1" data-toggle="dropdown">
+                                    <i class="fa fa-cogs"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                                <a href="#" class="widget-popout hidden tt" title="Pop Out/In"><i
+                                        class="icon-publish"></i></a>
+                                <a href="#" class="widget-maximize hidden"><i class="icon-resize-full-1"></i></a>
+                                <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
+                                <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <div id="website-statistic3" class="statistic-chart">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <h2>NASDAQ</h2>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label id="nasdaq-status" class="stock-status"></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <h2>DOW JONES</h2>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label id="dow-status" class="stock-status"></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <h2>S&P</h2>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label id="sp-status" class="stock-status"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="home-chart-3"></div>
+                        </div>
+                        <div class="widget-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Start -->
+            <footer>
+                Huban Creative &copy; 2014
+                <div class="footer-links pull-right">
+                    <a href="#">About</a><a href="#">Support</a><a href="#">Terms of Service</a><a href="#">Legal</a><a
+                        href="#">Help</a><a href="#">Contact Us</a>
+                </div>
+            </footer>
+            <!-- Footer End -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End content here -->
+        <!-- ============================================================== -->
+
+    </div>
+    <!-- End right content -->
+{/block}
+
+</div>
+<div id="contextMenu" class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
+        style="display:block;position:static;margin-bottom:5px;">
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="high"><i class="fa fa-circle-o text-red-1"></i> High
+            Priority</a></li>
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="medium"><i class="fa fa-circle-o text-orange-3"></i>
+            Medium Priority</a></li>
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="low"><i class="fa fa-circle-o text-yellow-1"></i> Low
+            Priority</a></li>
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="none"><i class="fa fa-circle-o text-lightblue-1"></i>
+            None</a></li>
+    </ul>
+</div>
+<!-- End of page -->
+<!-- the overlay modal element -->
+<div class="md-overlay"></div>
+<!-- End of eoverlay modal -->
+<script>
+    var resizefunc = [];
+</script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/admin/assets/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="/static/admin/assets/libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/admin/assets/libs/jqueryui/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/static/admin/assets/libs/jquery-ui-touch/jquery.ui.touch-punch.min.js"></script>
+<script src="/static/admin/assets/libs/jquery-detectmobile/detect.js"></script>
+<script src="/static/admin/assets/libs/jquery-animate-numbers/jquery.animateNumbers.js"></script>
+<script src="/static/admin/assets/libs/ios7-switch/ios7.switch.js"></script>
+<script src="/static/admin/assets/libs/fastclick/fastclick.js"></script>
+<script src="/static/admin/assets/libs/jquery-blockui/jquery.blockUI.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-bootbox/bootbox.min.js"></script>
+<script src="/static/admin/assets/libs/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="/static/admin/assets/libs/jquery-sparkline/jquery-sparkline.js"></script>
+<script src="/static/admin/assets/libs/nifty-modal/js/classie.js"></script>
+<script src="/static/admin/assets/libs/nifty-modal/js/modalEffects.js"></script>
+<script src="/static/admin/assets/libs/sortable/sortable.min.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-fileinput/bootstrap.file-input.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-select2/select2.min.js"></script>
+<script src="/static/admin/assets/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/static/admin/assets/libs/pace/pace.min.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="/static/admin/assets/libs/jquery-icheck/icheck.min.js"></script>
+
+<!-- Demo Specific JS Libraries -->
+<script src="/static/admin/assets/libs/prettify/prettify.js"></script>
+
+<script src="/static/admin/assets/js/init.js"></script>
+<!-- Page Specific JS Libraries -->
+<script src="/static/admin/assets/libs/d3/d3.v3.js"></script>
+<script src="/static/admin/assets/libs/rickshaw/rickshaw.min.js"></script>
+<script src="/static/admin/assets/libs/raphael/raphael-min.js"></script>
+<script src="/static/admin/assets/libs/morrischart/morris.min.js"></script>
+<script src="/static/admin/assets/libs/jquery-knob/jquery.knob.js"></script>
+<script src="/static/admin/assets/libs/jquery-jvectormap/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/static/admin/assets/libs/jquery-jvectormap/js/jquery-jvectormap-us-aea-en.js"></script>
+<script src="/static/admin/assets/libs/jquery-clock/clock.js"></script>
+<script src="/static/admin/assets/libs/jquery-easypiechart/jquery.easypiechart.min.js"></script>
+<script src="/static/admin/assets/libs/jquery-weather/jquery.simpleWeather-2.6.min.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-xeditable/js/bootstrap-editable.min.js"></script>
+<script src="/static/admin/assets/libs/bootstrap-calendar/js/bic_calendar.min.js"></script>
+<script src="/static/admin/assets/js/apps/calculator.js"></script>
+<script src="/static/admin/assets/js/apps/todo.js"></script>
+<script src="/static/admin/assets/js/apps/notes.js"></script>
+<script src="/static/admin/assets/js/pages/index.js"></script>
+</body>
+</html>
