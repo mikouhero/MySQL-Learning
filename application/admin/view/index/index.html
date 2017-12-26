@@ -88,7 +88,8 @@
     <div class="topbar">
         <div class="topbar-left">
             <div class="logo">
-                <h1><a href="{:url('admin/index/index')}"><img src="/static/admin/assets/img/logo.png" alt="Logo"></a></h1>
+                <h1><a href="{:url('admin/index/index')}"><img src="/static/admin/assets/img/logo.png" alt="Logo"></a>
+                </h1>
             </div>
             <button class="button-menu-mobile open-left">
                 <i class="fa fa-bars"></i>
@@ -237,7 +238,8 @@
             <!--- Profile -->
             <div class="profile-info">
                 <div class="col-xs-4">
-                    <a data-toggle="tooltip" title="See task progress" class="md-trigger" data-modal="task-progress"><img
+                    <a data-toggle="tooltip" title="See task progress" class="md-trigger"
+                       data-modal="task-progress"><img
                             src="/static/index/face/batman.jpg" class="img-responsive rounded-image profile-image"></a>
                 </div>
                 <div class="col-xs-8">
@@ -259,7 +261,7 @@
                     <li class="has_sub"><a href="javascript:void(0);"><i class="icon-home-3"></i><span>分类管理</span>
                         <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
                         <ul>
-                            <li><a href="{:url('admin/categorys/index')}" class="active"><span>分类列表 </span></a></li>
+                            <li><a href="{:url('admin/categorys/index')}" ><span>分类列表 </span></a></li>
                             <li><a href=""><span>分类树列表</span></a></li>
                             <li><a href="{:url('admin/categorys/create')}"><span>分类添加</span></a></li>
                         </ul>
@@ -269,7 +271,7 @@
                             class="fa fa-angle-down"></i></span></a>
                         <ul>
                             <li><a href="{:url('admin/user/index')}"><span>用户列表</span></a></li>
-                            <li><a href="{:url('admin/con2/func2')}"><span>用户添加</span></a></li>
+                            <li><a href="{:url('admin/user/create')}"><span>用户添加</span></a></li>
                         </ul>
                     </li>
 
@@ -277,8 +279,8 @@
                             class="icon-feather"></i><span>角色管理</span> <span class="pull-right"><i
                             class="fa fa-angle-down"></i></span></a>
                         <ul>
-                            <li><a href="{:url('admin/con2/func1')}"><span>角色列表</span></a></li>
-                            <li><a href="{:url('admin/con2/func2')}"><span>角色添加</span></a></li>
+                            <li><a href="{:url('admin/role/index')}"><span>角色列表</span></a></li>
+                            <li><a href="{:url('admin/role/create')}"><span>角色添加</span></a></li>
                         </ul>
                     </li>
 
@@ -286,8 +288,8 @@
                             class="icon-feather"></i><span>节点管理</span> <span class="pull-right"><i
                             class="fa fa-angle-down"></i></span></a>
                         <ul>
-                            <li><a href="{:url('admin/con2/func1')}"><span>功能 C</span></a></li>
-                            <li><a href="{:url('admin/con2/func2')}"><span>功能 D</span></a></li>
+                            <li><a href="{:url('admin/Node/index')}"><span>节点列表 </span></a></li>
+                            <li><a href="{:url('admin/Node/create')}"><span>添加节点</span></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -298,7 +300,7 @@
         </div>
     </div>
     <!-- Left Sidebar End -->
-{block name="main"}
+    {block name="main"}
     <!-- Start right content -->
     <div class="content-page">
         <!-- ============================================================== -->
@@ -990,19 +992,23 @@
 
     </div>
     <!-- End right content -->
-{/block}
+    {/block}
 
 </div>
 <div id="contextMenu" class="dropdown clearfix">
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
         style="display:block;position:static;margin-bottom:5px;">
-        <li><a tabindex="-1" href="javascript:void(0)" data-priority="high"><i class="fa fa-circle-o text-red-1"></i> High
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="high"><i class="fa fa-circle-o text-red-1"></i>
+            High
             Priority</a></li>
-        <li><a tabindex="-1" href="javascript:void(0)" data-priority="medium"><i class="fa fa-circle-o text-orange-3"></i>
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="medium"><i
+                class="fa fa-circle-o text-orange-3"></i>
             Medium Priority</a></li>
-        <li><a tabindex="-1" href="javascript:void(0)" data-priority="low"><i class="fa fa-circle-o text-yellow-1"></i> Low
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="low"><i class="fa fa-circle-o text-yellow-1"></i>
+            Low
             Priority</a></li>
-        <li><a tabindex="-1" href="javascript:void(0)" data-priority="none"><i class="fa fa-circle-o text-lightblue-1"></i>
+        <li><a tabindex="-1" href="javascript:void(0)" data-priority="none"><i
+                class="fa fa-circle-o text-lightblue-1"></i>
             None</a></li>
     </ul>
 </div>

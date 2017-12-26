@@ -8,11 +8,7 @@ use think\Db;
 
 class User extends Controller
 {
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
+
     public function index()
     {
         //查询user 表中的 用户名 和姓名
@@ -51,7 +47,7 @@ class User extends Controller
      */
     public function create()
     {
-        //
+        return view('admin@user/create');
     }
 
     /**
@@ -62,7 +58,16 @@ class User extends Controller
      */
     public function save(Request $request)
     {
-        //
+        $data = $request->put();
+        $info['name'] = $data['name'];
+        $info['username'] = $data['username'];
+        $info['userpass'] = md5($data['userpass']);
+        $result = Db::name('user')->insert($info);
+        if ($result>0) {
+            $this->success('添加成功','user/index');
+        } else {
+            $this->error('添加失败');
+        }
     }
 
     /**
@@ -84,9 +89,11 @@ class User extends Controller
      */
     public function edit($id)
     {
-        $list = Db::name('user')->field(['username','name'])->find($id);
-        // var_dump($list);
-        return view('admin@user/edit');
+        $list = Db::name('user')->field(['id','username','name'])->find($id);
+
+        return view('admin@user/edit',[
+            'list'=>$list
+        ]);
     }
 
     /**
@@ -98,7 +105,14 @@ class User extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $info = $request->post();
+        $result = Db::name('user')->where('id', $id)->update($info);
+        if ($result > 0) {
+            $this->success('修改成功','admin/user/index');
+        } else {
+            $this->success('修改失败');
+        }
+
     }
 
     /**
@@ -109,11 +123,66 @@ class User extends Controller
      */
     public function delete($id)
     {
+        // 删除用户的同时  同时也删除 user_role 表中对应得角色 user id = role_user.uid
+        //有bug 未分配角色 开启事务
+        $deluser = Db::name('user')->delete($id) ;
+        $delrole= Db::name('user_role')->where(array('uid'=>array('eq',$id)))->delete();
+        if ($deluser> 0  ) {
+            $this->success('删除成功','User/index');
+        } else {
+            $this->error('删除失败');
+        }
         return '删除';
+
     }
 
-    public function send()
+    public function rolelist($id)
     {
-        return '分配角色界面';
+        // 获取用户id  查询user_role中uid = id
+        // 遍历 role 中的角色
+        $list = Db::name('role')->where(['status'=>1])->select();
+        // var_dump($list);die;
+        $user = Db::name('user')->where(['id'=>$id])->find($id);
+        // 查询用户角色的相关信息
+        $rolelist =Db::name('user_role')->where(array('uid'=>array('eq',$id)))->select();
+
+        $myrole = array(); //定义空数组
+        //对用户的角色进行重组
+        foreach($rolelist as $v){
+            $myrole[] = $v['rid'];
+        }
+        // var_dump($user);
+        // var_dump($myrole);
+        // var_dump($list);die;
+        return view('admin@user/rolelist',[
+            'list'=>$list,
+            'user'=>$user,
+            'role'=>$myrole
+        ]);
+    }
+
+    public function saverole(Request $request,$id)
+    {
+        $data = $request->put();
+        if (empty($data['role'])) {
+        $this->error('请选择一个角色');
+    }
+        //清除用户所有的角色信息，避免重复添加
+        $del = Db::name('user_role')->where(array('uid'=>array('eq',$id)))->delete();
+        // dump($del);
+        // dump($data['role']);
+        foreach($data['role'] as $v){
+            $info['uid'] = $id;
+            $info['rid'] = $v;
+            //执行添加
+           $result =  Db::name('user_role')->insert($info);
+           // dump($result);
+        }
+
+        if ($result>0 ) {
+            $this->success('分配成功','User/index');
+        } else {
+            $this->error('分配失败');
+        }
     }
 }

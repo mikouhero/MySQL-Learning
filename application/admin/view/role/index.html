@@ -8,8 +8,8 @@
     <div class="content">
         <!-- Page Heading Start -->
         <div class="page-heading">
-            <h1><i class='fa fa-table'></i> 用户管理</h1>
-            <h3>用户列表</h3></div>
+            <h1><i class='fa fa-table'></i> 角色管理</h1>
+            <h3>角色列表</h3></div>
         <!-- Page Heading End-->                <!-- Your awesome content goes here -->
         <div class="row">
 
@@ -29,11 +29,10 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th style="width: 30px" data-sortable="false"><input type="checkbox"
-                                                                                         class="rows-check"></th>
-                                    <th>用户名</th>
-                                    <th>真实姓名</th>
-                                    <th>所属角色</th>
+                                    <th>角色名</th>
+                                    <th>角色说明</th>
+                                    <th>状态</th>
+                                    <th>拥有全限</th>
                                     <th data-sortable="false">Option</th>
                                 </tr>
                                 </thead>
@@ -42,20 +41,21 @@
                                 {volist name='list' id='v'}
                                 <tr>
                                     <td>{$v.id}</td>
-                                    <td><input type="checkbox" class="rows-check"></td>
-                                    <td><strong>{$v.username}</strong></td>
                                     <td>{$v.name}</td>
-                                    <td>{foreach $v.role as $vo}
-                                        {$vo}
-                                        {/foreach}
+                                    <td>{$v.remark}</td>
+                                    <td>{if condition="$v.status eq 1"}启用
+                                        {else/}禁用
+                                        {/if}
+
                                     </td>
+                                    <td></td>
                                     <td>
                                         <div class="btn-group btn-group-xs">
-                                            <a href="{:url('admin/User/delete',['id'=>$v['id']])}" data-toggle="tooltip" title="删除" class="btn btn-default"><i
+                                            <a href="{:url('admin/role/delete',['id'=>$v['id']])}" data-toggle="tooltip" title="删除" class="btn btn-default"><i
                                                     class="fa fa-power-off"></i></a>
-                                            <a href="{:url('admin/User/edit',['id'=>$v['id']])}" data-toggle="tooltip" title="修改" class="btn btn-default"><i
+                                            <a href="{:url('admin/role/edit',['id'=>$v['id']])}" data-toggle="tooltip" title="修改" class="btn btn-default"><i
                                                     class="fa fa-edit"></i></a>
-                                            <a href="{:url('admin/User/rolelist',['id'=>$v['id']])}" data-toggle="tooltip" title="分配角色" class="btn btn-default"><i
+                                            <a href="{:url('admin/role/nodelist',['id'=>$v['id']])}" data-toggle="tooltip" title="权限分配" class="btn btn-default"><i
                                                     class="fa fa-edit"></i></a>        
                                         </div>
                                     </td>

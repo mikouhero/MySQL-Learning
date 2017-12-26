@@ -7,24 +7,36 @@
 			<!-- ============================================================== -->
             <div class="content">
 								<!-- Page Heading Start -->
-				<h1><i class='fa fa-table'></i> 用户管理</h1>
-				<h3>修改用户</h3></div>
+				<h1><i class='fa fa-table'></i> 节点管理</h1>
+				<h3>修改节点</h3></div>
 			<!-- Page Heading End-->
 				<div class="row">
-					<div class="col-sm-3 "></div>
 					<div class="col-sm-6 portlets">
 						<div class="widget">
 							<div class="widget-content padding">
-								<form  action="{:url('admin/user/update',['id'=>$list['id']])}"  method='post' role="form" id="registerForm">
+								<form  action="{:url('admin/node/update',['id'=>$list['id']])}"  method='post' role="form" id="registerForm">
 								  <div class="form-group">
-									<label>用户名</label>
-									<input type="text" class="form-control" name="username" value ={$list.username} >
+									<label>节点名</label>
+									<input type="text" class="form-control" name="name" value ={$list.name} >
 								  </div>
 								  <div class="form-group">
-									<label>真实姓名</label>
-									<input type="text" class="form-control" name="name" value = {$list.name}>
+									<label>控制器名</label>
+									<input type="text" class="form-control" name="mname" value = {$list.mname}>
 								  </div>
-
+									<div class="form-group">
+										<label>方法名</label>
+										<input type="text" class="form-control" name="aname" value = {$list.aname}>
+									</div>
+									<div class="form-group">
+										<label>
+											<input type="radio" name="status" value="1" {if condition="$list.status eq 1 "} checked{/if}>
+											启用
+										</label>
+										<label>
+											<input type="radio" name="status" value="0" {if condition="$list.status eq 0"} checked{/if}>
+											禁用
+										</label>
+									</div>
 								  <button type="submit" class="btn btn-primary">保存</button>
 								</form>
 							</div>
