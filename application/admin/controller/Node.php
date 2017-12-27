@@ -6,7 +6,7 @@ use think\Controller;
 use think\Request;
 use think\Db;
 
-class Node extends Controller
+class Node extends Admin
 {
     public function index()
     {

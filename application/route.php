@@ -11,12 +11,12 @@
 
 use think\Route;
 
-// Route::get('/', 'index/Index/index');
+Route::get('/', 'index/Index/index');
 
 // Route::resource('users', 'rest/User');
 // Route::get('users/read/:id', 'rest/User/readpage');
 
-
+// user路由
 return [
 
 ];

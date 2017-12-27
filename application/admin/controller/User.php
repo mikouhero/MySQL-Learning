@@ -6,7 +6,7 @@ use think\Controller;
 use think\Request;
 use think\Db;
 
-class User extends Controller
+class User extends Admin
 {
 
     public function index()
@@ -145,15 +145,15 @@ class User extends Controller
         $user = Db::name('user')->where(['id'=>$id])->find($id);
         // 查询用户角色的相关信息
         $rolelist =Db::name('user_role')->where(array('uid'=>array('eq',$id)))->select();
-
+        // dump($rolelist);die;
         $myrole = array(); //定义空数组
         //对用户的角色进行重组
         foreach($rolelist as $v){
             $myrole[] = $v['rid'];
         }
         // var_dump($user);
-        // var_dump($myrole);
-        // var_dump($list);die;
+        // var_dump($myrole);die;
+        // var_dump($list)die;die;
         return view('admin@user/rolelist',[
             'list'=>$list,
             'user'=>$user,
@@ -164,6 +164,7 @@ class User extends Controller
     public function saverole(Request $request,$id)
     {
         $data = $request->put();
+        // var_dump($data);die;
         if (empty($data['role'])) {
         $this->error('请选择一个角色');
     }

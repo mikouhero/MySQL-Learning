@@ -6,7 +6,7 @@ use think\Controller;
 use think\Request;
 use think\Db;
 
-class Categorys extends Controller
+class Categorys extends Admin
 {
     /**
      * 显示资源列表

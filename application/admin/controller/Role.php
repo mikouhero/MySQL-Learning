@@ -6,7 +6,7 @@ use think\Controller;
 use think\Request;
 use think\Db;
 
-class Role extends Controller
+class Role extends Admin
 {
 
     public function index()
@@ -94,6 +94,9 @@ class Role extends Controller
         foreach ($data as $v) {
             $list[] = $v['nid'];
         }
+        // var_dump($nodes);
+        // var_dump($role);
+        // var_dump($list);die;
         return view('admin@role/nodelist',[
             'nodes'=>$nodes,
             'role'=>$role,
