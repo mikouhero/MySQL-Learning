@@ -8,14 +8,15 @@ use think\Db;
 
 class Categorys extends Admin
 {
-    /**
-     * 显示资源列表
-     *
-     * @return \think\Response
-     */
+
     public function index()
     {
         $list = Db::name('category')->field(['id','name','path'])->select();
+        foreach ($list as $k=>$v){
+            $count = substr_count($v['path'],',');
+            $list[$k]['level']=$count;
+        }
+        // var_dump($list);die;
         return view('admin@categorys/index',[
             'list'=>$list
         ]);

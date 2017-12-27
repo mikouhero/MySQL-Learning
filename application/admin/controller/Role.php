@@ -27,7 +27,7 @@ class Role extends Admin
         $data = $request->post();
         $result = DB::name('role')->insert($data);
         if ($result > 0) {
-            $this->success('添加成功','role/index');
+            $this->success('添加成功','admin/role/index');
         } else {
             $this->error('添加失败');
         }
@@ -50,10 +50,11 @@ class Role extends Admin
 
     public function update(Request $request, $id)
     {
-        $data = $request->post();
+        $data = $request->put();
+        unset($data['_method']);
         $result = Db::name('role')->where(['id'=>$id])->update($data);
         if ($result > 0) {
-            $this->success('修改成功','role/index');
+            $this->success('修改成功','admin/role/index');
         } else {
             $this->error('修改失败');
         }
@@ -62,6 +63,7 @@ class Role extends Admin
 
     public function delete($id)
     {
+
       // 删除一个角色  role 中对应得$id
         //同时删除用户对应得角色 user_role 中 rid = $id
         // 删除角色所对应的节点 role_node  中  rid = $id
@@ -106,7 +108,9 @@ class Role extends Admin
 
     public function savenode(Request $request,$id)
     {
-        $data = $request->post();
+        $data = $request->put();
+        unset($data['_method']);
+        // var_dump($data);die;
         if(empty($data['node'])){
             $this->error('请分配权限');
             die;
@@ -120,7 +124,7 @@ class Role extends Admin
         }
 
         if ($result>0) {
-            $this->success('修改成功','Role/index');
+            $this->success('修改成功','admin/Role/index');
         } else {
             $this->error('修改失败');
         }

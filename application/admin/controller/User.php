@@ -64,7 +64,7 @@ class User extends Admin
         $info['userpass'] = md5($data['userpass']);
         $result = Db::name('user')->insert($info);
         if ($result>0) {
-            $this->success('添加成功','user/index');
+            $this->success('添加成功','admin/User/index');
         } else {
             $this->error('添加失败');
         }
@@ -105,7 +105,8 @@ class User extends Admin
      */
     public function update(Request $request, $id)
     {
-        $info = $request->post();
+        $info = $request->put();
+        unset($info['_method']);
         $result = Db::name('user')->where('id', $id)->update($info);
         if ($result > 0) {
             $this->success('修改成功','admin/user/index');
@@ -128,7 +129,7 @@ class User extends Admin
         $deluser = Db::name('user')->delete($id) ;
         $delrole= Db::name('user_role')->where(array('uid'=>array('eq',$id)))->delete();
         if ($deluser> 0  ) {
-            $this->success('删除成功','User/index');
+            $this->success('删除成功','admin/User/index');
         } else {
             $this->error('删除失败');
         }
@@ -164,6 +165,7 @@ class User extends Admin
     public function saverole(Request $request,$id)
     {
         $data = $request->put();
+        unset($data['_method']);
         // var_dump($data);die;
         if (empty($data['role'])) {
         $this->error('请选择一个角色');
@@ -181,7 +183,7 @@ class User extends Admin
         }
 
         if ($result>0 ) {
-            $this->success('分配成功','User/index');
+            $this->success('分配成功','admin/User/index');
         } else {
             $this->error('分配失败');
         }

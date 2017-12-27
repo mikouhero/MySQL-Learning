@@ -29,9 +29,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th style="width: 30px" data-sortable="false"><input type="checkbox"
-                                                                                         class="rows-check"></th>
-                                    <th>用户名</th>
+                    <th>用户名</th>
                                     <th>真实姓名</th>
                                     <th>所属角色</th>
                                     <th data-sortable="false">Option</th>
@@ -42,7 +40,6 @@
                                 {volist name='list' id='v'}
                                 <tr>
                                     <td>{$v.id}</td>
-                                    <td><input type="checkbox" class="rows-check"></td>
                                     <td><strong>{$v.username}</strong></td>
                                     <td>{$v.name}</td>
                                     <td>{foreach $v.role as $vo}

@@ -16,6 +16,8 @@ class Admin extends Controller
             //跳转到登录页面
             $this->redirect('Login/index');
         }
+        $username = Session::get('admin_user.username');
+        $this->assign('username',$username);
         //权限过滤
         $request= \think\Request::instance();
         $module = $request->module();

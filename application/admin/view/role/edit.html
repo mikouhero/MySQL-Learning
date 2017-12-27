@@ -15,6 +15,7 @@
 						<div class="widget">
 							<div class="widget-content padding">
 								<form  action="{:url('admin/role/update',['id'=>$list['id']])}"  method='post' role="form" id="registerForm">
+									<input type="hidden" name="_method" value="put">
 								  <div class="form-group">
 									<label>角色名</label>
 									<input type="text" class="form-control" name="name" value = {$list.name}>

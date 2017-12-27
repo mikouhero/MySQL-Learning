@@ -23,7 +23,8 @@
 						<div class="widget">
 							<div class="widget-content padding">
 									<form action="{:url('admin/user/saverole',['id'=>$user['id']])}" method="post" class="form-horizontal" role="form">
-									  <div class="form-group">
+										<input type="hidden" name="_method" value="put">
+										<div class="form-group">
 										<label  class="col-sm-offset-1 control-label">
 											给 <b class="h4">{$user.username} </b> 分配角色
 										</label>

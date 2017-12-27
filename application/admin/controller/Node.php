@@ -24,10 +24,12 @@ class Node extends Admin
 
     public function save(Request $request)
     {
-       $data = $request->post();
+       $data = $request->put();
+       unset($data['_method']);
+       // var_dump($data);die;
        $result = Db::name('node')->insert($data);
        if ($result >0) {
-           $this->success('添加成功','node/index');
+           $this->success('添加成功','admin/node/index');
        } else {
            $this->error('添加失败');
        }
@@ -48,10 +50,12 @@ class Node extends Admin
 
     public function update(Request $request, $id)
     {
-        $data = $request->post();
+        $data = $request->put();
+        unset($data['_method']);
+        // var_dump($data);die;
         $result = Db::name('node')->where(['id'=>$id])->update($data);
        if ($result>0) {
-           $this->success('修改成功','node/index');
+           $this->success('修改成功','admin/node/index');
        } else {
            $this->error('修改失败');
        }
@@ -61,7 +65,7 @@ class Node extends Admin
     {
         $result = Db::name('node')->where(['id'=>$id])->delete();
         if ($result>0) {
-            $this->success('删除成功','Node/index');
+            $this->success('删除成功','admin/Node/index');
         } else {
             $this->error('删除失败');
         }

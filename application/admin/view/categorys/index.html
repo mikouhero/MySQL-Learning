@@ -22,8 +22,6 @@
                                 <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th style="width: 30px" data-sortable="false"><input type="checkbox"
-                                                                                         class="rows-check"></th>
                                     <th>分类名</th>
                                     <th>级别</th>
                                     <th>path</th>
@@ -36,9 +34,8 @@
                                 {volist name='list' id ='v'}
                                 <tr>
                                     <td>{$v.id}</td>
-                                    <td><input type="checkbox" class="rows-check"></td>
                                     <td><strong>{$v.name}</strong></td>
-                                    <td>一级分类</td>
+                                    <td>{$v.level}级分类</td>
                                     <td>{$v.path}</td>
                                     <td>
                                         <div class="btn-group btn-group-xs">
