@@ -14,8 +14,6 @@ class User extends Admin
         //查询user 表中的 用户名 和姓名
         $list = Db::name('user')->field(['id','username','name'])->select();
         // 查询对应用户的角色 role
-
-
         $arr = array(); //声明一个空数组
         //遍历用户信息
         foreach($list as $v) {
@@ -28,7 +26,6 @@ class User extends Admin
             //查询角色表名称 _role 表  role表中的id  对应的是 用户角色表中的rid
             foreach ($role_ids as $value) {
                 $roles[] = Db::name('_role')->where(array('id' => array('eq', $value['rid']), 'status' => array('eq', 1)))->value('name');
-
             }
             $v['role'] = $roles; //将新得到角色信息放置到$v中
             // dump($v);die;
@@ -40,22 +37,11 @@ class User extends Admin
         ]);
     }
 
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
     public function create()
     {
         return view('admin@user/create');
     }
 
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
     public function save(Request $request)
     {
         $data = $request->put();
@@ -70,23 +56,10 @@ class User extends Admin
         }
     }
 
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
     public function read($id)
     {
-        //
     }
 
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
     public function edit($id)
     {
         $list = Db::name('user')->field(['id','username','name'])->find($id);
@@ -96,13 +69,6 @@ class User extends Admin
         ]);
     }
 
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
     public function update(Request $request, $id)
     {
         $info = $request->put();
@@ -116,24 +82,28 @@ class User extends Admin
 
     }
 
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
     public function delete($id)
     {
         // 删除用户的同时  同时也删除 user_role 表中对应得角色 user id = role_user.uid
         //有bug 未分配角色 开启事务
         $deluser = Db::name('user')->delete($id) ;
         $delrole= Db::name('user_role')->where(array('uid'=>array('eq',$id)))->delete();
-        if ($deluser> 0  ) {
-            $this->success('删除成功','admin/User/index');
+        // if ($deluser> 0  ) {
+        //     $this->success('删除成功','admin/User/index');
+        // } else {
+        //     $this->error('删除失败');
+        // }
+
+        if ($deluser > 0) {
+            $info['status'] = true;
+            $info['id'] = $id;
+            $info['info'] = 'ID为: ' . $id . '的用户删除成功!';
         } else {
-            $this->error('删除失败');
+            $info['status'] = false;
+            $info['id'] = $id;
+            $info['info'] = 'ID为: ' . $id . '的用户删除失败,请重试!';
         }
-        return '删除';
+        return json($info);
 
     }
 

@@ -33,12 +33,10 @@ class Role extends Admin
         }
     }
 
-
     public function read($id)
     {
         //
     }
-
 
     public function edit($id)
     {
@@ -60,23 +58,32 @@ class Role extends Admin
         }
     }
 
-
     public function delete($id)
     {
-
-      // 删除一个角色  role 中对应得$id
+        // 删除一个角色  role 中对应得$id
         //同时删除用户对应得角色 user_role 中 rid = $id
         // 删除角色所对应的节点 role_node  中  rid = $id
         // 有bug
-            $data = Db::name('role')->where(['id'=>$id])->delete();
-            $dataur = Db::name('user_role')->where(['rid'=>$id])->delete();
-            $datarn = Db::name('role_node')->where(['rid'=>$id])->delete();
+        $data = Db::name('role')->where(['id'=>$id])->delete();
+        $dataur = Db::name('user_role')->where(['rid'=>$id])->delete();
+        $datarn = Db::name('role_node')->where(['rid'=>$id])->delete();
 
-        if ($data > 0 && $datarn > 0 && $dataur > 0) {
-            $this->success('删除成功','role/index');
+        // if ($data > 0 && $datarn > 0 && $dataur > 0) {
+        //     $this->success('删除成功','role/index');
+        // } else {
+        //     $this->error('删除成功');
+        // }
+
+        if ($data > 0) {
+            $info['status'] = true;
+            $info['id'] = $id;
+            $info['info'] = '角色删除成功!';
         } else {
-            $this->error('删除成功');
+            $info['status'] = false;
+            $info['id'] = $id;
+            $info['info'] = '角色删除失败!';
         }
+        return json($info);
     }
 
     //角色的权限列表

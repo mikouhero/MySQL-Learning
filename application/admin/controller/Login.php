@@ -25,7 +25,13 @@ class Login extends Controller
         //验证密码
         $username = $data['username'];
         $userpass = $data['userpass'];
-        var_dump($data);
+        $code = $data['code'];
+        if(!captcha_check($code))
+        {
+            $this->error("验证码错误");
+        };
+
+            // var_dump($data);
         //验证用户名
         $user = Db::name('user')->where(['username'=>$username])->find();
         // var_dump($user);die;
@@ -89,6 +95,8 @@ class Login extends Controller
         // 将权限分配到session中
         Session::set('admin_user.nodelist',$list);
         // var_dump($_SESSION['think']['admin_user']);
+        // var_dump(Session::get('admin_user.nodelist'));die;
+
 
         //跳转到首页
         $this->redirect('Index/index');

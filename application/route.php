@@ -14,7 +14,7 @@ use think\Route;
 Route::get('/', 'index/Index/index');
 
 //用户删除
-Route::get('users/delete/:id','admin/User/delete');
+// Route::get('users/delete/:id','admin/User/delete');
 // 用户rolelist 列表
 Route::get('users/rolelist/:id','admin/User/rolelist');
 // 用户savelist 角色保存
@@ -23,7 +23,7 @@ Route::put('users/saverole/:id','admin/User/saverole');
 
 
 //角色删除
-Route::get('role/delete/:id','admin/Role/delete');
+// Route::get('role/delete/:id','admin/Role/delete');
 // 用户nodelist 列表
 Route::get('role/rolelist/:id','admin/Role/nodelist');
 // 用户nodelist 角色保存

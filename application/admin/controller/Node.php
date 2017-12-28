@@ -64,10 +64,20 @@ class Node extends Admin
     public function delete($id)
     {
         $result = Db::name('node')->where(['id'=>$id])->delete();
-        if ($result>0) {
-            $this->success('删除成功','admin/Node/index');
+        // if ($result>0) {
+        //     $this->success('删除成功','admin/Node/index');
+        // } else {
+        //     $this->error('删除失败');
+        // }
+        if ($result > 0) {
+            $info['status'] = true;
+            $info['id'] = $id;
+            $info['info'] = '节点删除成功!';
         } else {
-            $this->error('删除失败');
+            $info['status'] = false;
+            $info['id'] = $id;
+            $info['info'] = '节点删除失败!';
         }
+        return json($info);
     }
 }

@@ -29,6 +29,7 @@ class Admin extends Controller
         //获取权限列表
         $nodelist = Session::get('admin_user.nodelist');
         // var_dump($nodelist);
+        // var_dump($nodelist[$mname]);die;
 
         // 超级管理员 所有权限
         if(Session::get('admin_user.username') != 'admin'){

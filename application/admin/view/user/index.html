@@ -48,8 +48,8 @@
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-xs">
-                                            <a href="{:url('admin/User/delete',['id'=>$v['id']])}" data-toggle="tooltip" title="删除" class="btn btn-default"><i
-                                                    class="fa fa-power-off"></i></a>
+                                            <button data-id="{$v.id}"data-toggle="tooltip" title="删除"  class=" btn btn-default del-btn "><i
+                                                    class="fa fa-power-off"></i></button>
                                             <a href="{:url('admin/User/edit',['id'=>$v['id']])}" data-toggle="tooltip" title="修改" class="btn btn-default"><i
                                                     class="fa fa-edit"></i></a>
                                             <a href="{:url('admin/User/rolelist',['id'=>$v['id']])}" data-toggle="tooltip" title="分配角色" class="btn btn-default"><i
@@ -100,5 +100,57 @@
 
 </div>
 <!-- End right content -->
+
+{js href="/static/index/js/jquery.min.js"}
+{js href="/static/index/js/bootstrap.min.js"}
+{js href="/static/index/js/toastr.min.js"}
+<script>
+    $(function () {
+        // 触发删除用户
+        $('.del-btn').click(function () {
+            var ac_id = $(this).attr('data-id');
+//             console.log('删除操作,ID为: ' + ac_id);
+            if (confirm('您确定要 [ 删 除 ] 该用户吗?')) {
+                var obj = $(this).parents('tr');
+//                 console.log(obj);
+                delAjax(ac_id, obj); // 执行AJAX删除
+            }
+        });
+    });
+
+    // 设置弹框参数
+    toastr.options = {
+        closeButton: true,// 是否显示关闭按钮
+        progressBar: true,// 实现显示计时条
+        timeOut: "3000",// 自动关闭时间
+        positionClass: "toast-bottom-left"// 提示位置
+        // positionClass: "toast-top-full-width"// 提示位置
+        // toast-top-full-width 顶端，宽度铺满整个屏幕
+        // toast-top-right  顶端右边
+    };
+
+    // 执行AJAX删除
+    function delAjax(id, obj) {
+        console.log(id);
+        $.ajax({
+            type: 'delete',
+            url: '/users/' + id,
+            dataType : 'json',
+            success : function (data){
+                // console.log(data);
+                if (data.status) {
+                    toastr.success(data.info);
+                    obj.remove();
+                } else {
+                    toastr.error(data.info, '警告 :');
+                }
+            },
+            error : function () {
+                alert('删除失败!');
+            }
+        });
+    }
+
+</script>
 
 {/block}
