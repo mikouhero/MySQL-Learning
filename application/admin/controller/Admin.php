@@ -43,9 +43,9 @@ class Admin extends Controller
     }
 
 
-    public function index()
+    public function _empty()
     {
-
+        $this->redirect('admin/Index/index');
     }
 
 

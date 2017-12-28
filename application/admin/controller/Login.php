@@ -9,7 +9,10 @@ use think\Session;
 
 class Login extends Controller
 {
-
+    public function _empty()
+    {
+        $this->redirect('admin/Index/index');
+    }
     public function index()
     {
         return view('admin@login/index');
@@ -22,8 +25,10 @@ class Login extends Controller
         //验证密码
         $username = $data['username'];
         $userpass = $data['userpass'];
+        var_dump($data);
         //验证用户名
         $user = Db::name('user')->where(['username'=>$username])->find();
+        // var_dump($user);die;
         if(!$user) {
             $this->error('用户名不存在');
             exit;

@@ -43,9 +43,15 @@ Route::resource('role','admin/Role');
 // 用户列表路由 增改查
 Route::resource('users','admin/User');
 
+// 后台登录
+// Route::get('adminlogin','admin/Login');
 
 // 角色列表路由
-// Route::resource('roles','admin/Role');
+Route::resource('roles','admin/Role');
+
+// 空路由
+// Route::get('/admin/:name','admin/Index', ['name' => '\w+']);
+
 return [
 
 ];
