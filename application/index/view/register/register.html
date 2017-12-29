@@ -11,6 +11,7 @@
     <!-- Bootstrap -->
         <link href="/static/index/tipask/css/bootstrap.min.css" rel="stylesheet">
         <link href="/static/index/tipask/css/account.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/index/css/toastr.min.css">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,19 +24,19 @@
 <div class="container">
         <div class="header text-center">
         <h1>
-            <a href="https://wenda.tipask.com" class="logo">
+            <a href="" class="logo">
                 <img src="/static/index/tipask/picture/login-logo.png" alt="Tipask站长社区">
             </a>
         </h1>
         <p class="description text-muted">欢迎加入Tipask站长问答社区</p>
     </div>
+
     <div class="col-md-6 col-md-offset-3 bg-white login-wrap">
         <h1 class="h4 text-center text-muted login-title">创建新账号</h1>
-        <form role="form" id="registerForm" action="https://wenda.tipask.com/register" method="post">
-            <input type="hidden" name="_token" value="o6i0tTxsEgUfdnK84w92bpRoV9z6Xsxg3acVH1vW">
+        <form role="form" id="registerForm" action="{:url('index/Register/save')}" method="post">
             <div class="form-group ">
                 <label class="required">姓名</label>
-                <input type="text" class="form-control" name="name" value="" required  placeholder="姓名">
+                <input type="text" class="form-control" name="username" value="" required  placeholder="姓名">
                             </div>
                             <div class="form-group ">
                     <label for="mobile" class="required control-label">手机号码</label>
@@ -56,7 +57,7 @@
             </div>
             <div class="form-group ">
                 <label for="" class="required">确认密码</label>
-                <input type="password" class="form-control" name="password_confirmation" required placeholder="不少于 6 位">
+                <input type="password" class="form-control" name="repassword" required placeholder="不少于 6 位">
                             </div>
                         <div class="form-group">
                 同意并接受 <a href="#" target="_blank" data-toggle="modal" data-target="#register_license_modal">《服务条款》</a>
@@ -69,9 +70,9 @@
 
 
     <div class="text-center col-md-12 login-link">
-        <a href="https://wenda.tipask.com/login">用户登录</a>
+        <a href="">用户登录</a>
         |
-        <a href="https://wenda.tipask.com">首页</a>
+        <a href="">首页</a>
         |
         <a href="https://wenda.tipask.com/forgetPassword">找回密码</a>
     </div>
@@ -96,42 +97,28 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/static/index/tipask/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/index/tipask/js/bootstrap.min.js"></script>
 <script src="/static/index/tipask/js/global.js"></script>
-            <div class="modal fade" id="verify_code_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">请输入验证码</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <form name="smsForm" id="send_sms_form" onsubmit="return sendSmsCode();"  method="POST">
-                        <input type="hidden" name="mobile" id="send_to_mobile" value="" />
-                        <input type="hidden" name="send_type" id="send_type" value="code" />
-                        <div class="form-group ">
-                            <label for="mobile" class="required control-label col-sm-4">验证码</label>
-                            <div class="col-sm-6">
-                                <input name="captcha" id="sms_captcha" type="text" maxlength="32" placeholder="请输入下方验证码" class="form-control" value="" />
-                                                                <div class="mt-10"><a href="javascript:void(0);" id="reloadCaptcha"><img src="/static/index/tipask/picture/aed267c909be461598eaf60edd816673.gif"></a></div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="btn_verify_captcha">确认</button>
-            </div>
-        </div>
-    </div>
+            <div class="" id="verify_code_modal"  >
+
 </div>
+{js href="/static/index/js/toastr.min.js"}
+
 <script type="text/javascript">
     var countdown_second = 60;
+
     function Countdown(btn) {
         if (countdown_second == 0) {
             btn.attr("class","btn btn-xl btn-default btn-send-code");
@@ -158,36 +145,50 @@
                 show_form_error($("#"+mobile_id),"手机号码格式错误");
                 return false;
             }
-            var modal = $(this);
-            modal.find('#send_to_mobile').val(mobile);
-            modal.find('#send_type').val(send_type);
-            $("#reloadCaptcha").trigger('click');
-        });
-
-        $("#btn_verify_captcha").click(function(){
             sendSmsCode();
         });
+
     });
-    
+
+    // 设置弹框参数
+    toastr.options = {
+        closeButton: true,// 是否显示关闭按钮
+        progressBar: true,// 实现显示计时条
+        timeOut: "3000",// 自动关闭时间
+        positionClass: "toast-top-left"// 提示位置
+//         positionClass: "toast-top-full-width"// 提示位置
+        // toast-top-full-width 顶端，宽度铺满整个屏幕
+        // toast-top-right  顶端右边
+    };
+
     function sendSmsCode() {
-        var mobile = $("#send_to_mobile").val();
-        var captcha = $("#sms_captcha").val();
-        var send_type = $("#send_type").val();
-        $.post('/ajax/sendSmsCode',{mobile:mobile,send_type:send_type,code:captcha},function(msg){
-            console.log(msg);
-            if( msg.code == 0 ){
-                $('#verify_code_modal').modal('hide');
-                Countdown($(".btn-send-code"));
-            }else{
-                show_form_error($("#sms_captcha"),msg.message);
-                $("#reloadCaptcha").trigger('click');
-                return false;
+//        var mobile = $("#mobile").val();
+        var mobile = $('#mobile').serialize();
+        console.log(mobile);
+        $.ajax({
+            type: 'post',
+            url: '/index/register/receive/',
+            data: mobile,
+            dataTpye:'json',
+            success : function (data){
+                 if(data.status){
+                     toastr.success(data.msg);
+//                     console.log(data);
+                     $('#verify_code_modal').modal('hide');
+                     Countdown($(".btn-send-code"));
+                 }else{
+                     $("#reloadCaptcha").trigger('click');
+                     toastr.error(data.msg, '警告 :');
+                     return false;
+                 }
+            },
+            error : function () {
+//                console.log('ad');
             }
         });
-        return false;
     }
 
 </script>
-        
+
 </body>
 </html>

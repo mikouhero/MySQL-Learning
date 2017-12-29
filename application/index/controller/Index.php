@@ -6,6 +6,7 @@ class Index
 {
     public function index()
     {
-        return 'TP5前台主页';
+        return view('index@index/index');
+        // return 'TP5前台主页';
     }
 }

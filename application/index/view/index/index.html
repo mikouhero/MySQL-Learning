@@ -1,0 +1,608 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="9eXunl4QKfFKf3BftinEr5yYxk5A338UTo7uy8or" />
+    <title>Tipask站长社区 - 做最好的中文开源问答系统</title>
+    <meta name="keywords" content="问答系统,PHP问答系统,Tipask问答系统 ,Laravel问答系统,社区问答系统" />
+    <meta name="description" content="Tipask问答系统站长社区交流平台，同时也是Tipask问答系统的实际站点演示。" />
+    <meta name="author" content="Tipask Team" />
+    <meta name="copyright" content="2016 tipask.com" />
+    <meta property="qc:admins" content="11575435634164101336375" />
+<meta property="wb:webmaster" content="21013a86963dbbe5" />
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d15afd4a23de536d1b138b4daa781db7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<link rel="stylesheet" href="/static/index/tipask/css/share.min.css">
+    <!-- Bootstrap -->
+    <link href="/static/index/tipask/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/index/tipask/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/static/index/tipask/css/global.css" rel="stylesheet" />
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/static/index/tipask/js/html5shiv.min.js"></script>
+    <script src="/static/index/tipask/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="global-nav mb-50">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container nav">
+            <div class="visible-xs header-response">
+                <a href="" style="display:block"><i class="fa fa-search" aria-hidden="true"></i></a>
+                <div class="m-header-logo m-header-logo-response"><h1><a href="/" style="height:34px; background-size: auto 44px;"></a></h1></div>
+                                    <a href="" class="pull-right login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                <div class="bottom-nav">
+                    <div class="opts">
+                        <a class="opts-group " href=""><i class="fa fa-paper-plane" aria-hidden="true"></i><span>发现</span></a>
+                        <a class="opts-group " href=""><i class="fa fa-question-circle" aria-hidden="true"></i><span>问答</span></a>
+                        <div class="opts-group">
+                            <div class="btn-group dropup">
+                                <i class="fa fa-plus dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true" aria-expanded="false"><span>发起</span></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">提问</a></li>
+                                    <li><a href="">文章</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a class="opts-group " href=""><i class="fa fa-newspaper-o" aria-hidden="true"></i><span>文章</span></a>
+                        <div class="opts-group">
+                            <div class="btn-group dropup">
+                                <i class="fa fa-bars dropdown hoverDropdown" data-toggle="dropdown" aria-hidden="true" aria-expanded="false"><span>更多</span></i>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">专家</a></li>
+                                    <li><a href="">话题</a></li>
+                                    <li><a href="">财富榜</a></li>
+                                    <li><a href="">商城</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row hidden-xs">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#global-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="logo"><a class="navbar-brand logo" href=""></a></div>
+            </div>
+            <div class="collapse navbar-collapse" id="global-navbar">
+                <form class="navbar-form navbar-left" role="search" id="top-search-form" action="" method="GET">
+                    <div class="input-group col-xs-12">
+                        <input type="text" name="word" id="searchBox" class="form-control" placeholder="搜索您感兴趣的内容..." />
+                        <span class="input-group-addon btn" ><span id="search-button" class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li  class="active" ><a href="https://wenda.tipask.com">首页 <span class="sr-only">(current)</span></a></li>
+                                        <li ><a href="https://wenda.tipask.com/questions">问答</a></li>
+                    <li ><a href="https://wenda.tipask.com/articles">文章</a></li>
+                    <li ><a href="https://wenda.tipask.com/topics">话题</a></li>
+                    <li ><a href="https://wenda.tipask.com/shop">商城</a></li>
+                </ul>
+                                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index/login">登录</a></li>
+                        <li><a href="index/register">注册</a></li>
+                    </ul>
+                            </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="top-alert mt-60 clearfix text-center">
+    <!--[if lt IE 9]>
+    <div class="alert alert-danger topframe" role="alert">你的浏览器实在<strong>太太太太太太旧了</strong>，放学别走，升级完浏览器再说
+        <a target="_blank" class="alert-link" href="http://browsehappy.com">立即升级</a>
+    </div>
+    <![endif]-->
+
+    
+
+    </div>
+
+<div class="wrap">
+            <div class="jumbotron text-center hidden-xs">
+        <h4>欢迎加入Tipask站长问答社区，一起记录站长的世界 <a class="btn btn-primary ml-10" href="https://wenda.tipask.com/register" role="button">立即注册</a> <a class="btn btn-default ml-5" href="https://wenda.tipask.com/login" role="button">用户登录</a></h4>
+    </div>
+            <div class="container">
+            <div class="row mt-10">
+        <div class="col-xs-12 col-md-9 main">
+            <div class="widget-box mb-10">
+                <h4 class="widget-box-title">最新推荐</h4>
+                <div class="job-list-item row">
+                    <div class="col-md-6">
+                        <div id="carousel-recommendation" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-recommendation" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-recommendation" data-slide-to="1"></li>
+                                <li data-target="#carousel-recommendation" data-slide-to="2"></li>
+                            </ol>
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="leftmodbox">
+                                                                                                <div  class="item active" >
+                                    <a href="https://wenda.tipask.com/article/5101" target="_blank"><img src="/static/index/tipask/picture/recommendations-rlr6gjly5948ba472b65d.jpg" alt="手把手教你把网站排名做到百度首页"></a>
+                                    <div class="carousel-caption">
+                                        <h4>手把手教你把网站排名做到百度首页</h4>
+                                    </div>
+                                </div>
+                                                                                                                                <div  class="item" >
+                                    <a href="https://wenda.tipask.com/article/5052" target="_blank"><img src="/static/index/tipask/picture/recommendations-7ne31feg58eee9a6f4196.jpg" alt="网站运营怎么寻找&ldquo;种子用户&rdquo;？"></a>
+                                    <div class="carousel-caption">
+                                        <h4>网站运营怎么寻找&ldquo;种子用户&rdquo;？</h4>
+                                    </div>
+                                </div>
+                                                                                                                                <div  class="item" >
+                                    <a href="https://wenda.tipask.com/article/4966" target="_blank"><img src="/static/index/tipask/picture/recommendations-xmrxl21n589de861a1c34.jpg" alt="不会编程也能开发微信小程序的入门教程"></a>
+                                    <div class="carousel-caption">
+                                        <h4>不会编程也能开发微信小程序的入门教程</h4>
+                                    </div>
+                                </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="widget-links list-unstyled">
+                                                                                                                                                                                                                                                            <li class="widget-links-item">
+                                <a href="https://wenda.tipask.com/article/4924" target="_blank" >如何有效的提高百度收录速度</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/article/78" target="_blank" >论正确提问的姿势</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/article/32" target="_blank" >百度搜索升级,BaiduSpider3.0来看看都有哪些功能！</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/article/28" target="_blank" >奥巴马为何卸任后想做科技业的风险投资人？</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/article/4" target="_blank" >干货分享：网站优化的那些事</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/article/15" target="_blank" >知乎问答社区面临转型问题 知乎要变现了</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/article/8" target="_blank" >行家招募令，大牛快来认证吧！</a>
+                            </li>
+                                                                                                                <li class="widget-links-item">
+                                <a href="http://wenda.tipask.com/question/4" target="_blank" >个人站长做网站没有内容来源怎么办？</a>
+                            </li>
+                                                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="widget-box">
+                <div class="job-list-item row">
+                    <div class="col-md-6">
+                        <h4 class="widget-box-title">最新问题 <a href="https://wenda.tipask.com/questions/all/newest" target="_blank" title="更多">»</a> </h4>
+                        <ul class="widget-links list-unstyled">
+                                                        <li class="widget-links-item">
+                                <a title="看盘技术的分析该怎么培养？《爱死磕解析》" target="_blank"  href="https://wenda.tipask.com/question/4779">看盘技术的分析该怎么培养？《爱死磕解析》</a>
+                                <small class="text-muted">0 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="期货投资心态如何炒期货《爱死磕解析》" target="_blank"  href="https://wenda.tipask.com/question/4777">期货投资心态如何炒期货《爱死磕解析》</a>
+                                <small class="text-muted">0 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="股票有哪些特征出现的时候可以买入？《爱死磕解析》" target="_blank"  href="https://wenda.tipask.com/question/4774">股票有哪些特征出现的时候可以买入？《爱死磕解析》</a>
+                                <small class="text-muted">0 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="尾盘的行在洗盘中预示着什么《爱死磕解析》" target="_blank"  href="https://wenda.tipask.com/question/4773">尾盘的行在洗盘中预示着什么《爱死磕解析》</a>
+                                <small class="text-muted">0 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="RSI指标运用原则？（爱死磕）RSI指标的优缺点？" target="_blank"  href="https://wenda.tipask.com/question/4772">RSI指标运用原则？（爱死磕）RSI指标的优缺点？</a>
+                                <small class="text-muted">0 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="RSI指标的缺陷（爱死磕）短线卖出信号攻略？" target="_blank"  href="https://wenda.tipask.com/question/4771">RSI指标的缺陷（爱死磕）短线卖出信号攻略？</a>
+                                <small class="text-muted">0 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="RSI指标的应用原则？（爱死磕）RSI指标的操盘技巧？" target="_blank"  href="https://wenda.tipask.com/question/4770">RSI指标的应用原则？（爱死磕）RSI指标的操盘技巧？</a>
+                                <small class="text-muted">1 回答</small>
+                            </li>
+                                                        <li class="widget-links-item">
+                                <a title="RSI指标的操盘技巧（爱死磕）RSI指标的买卖信号？" target="_blank"  href="https://wenda.tipask.com/question/4769">RSI指标的操盘技巧（爱死磕）RSI指标的买卖信号？</a>
+                                <small class="text-muted">1 回答</small>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="widget-box-title">悬赏问题 <a href="https://wenda.tipask.com/questions/all/reward" target="_blank" title="更多">»</a></h4>
+
+                        <ul class="widget-links list-unstyled">
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="期货投资心态如何炒期货《爱死磕解析》" href="https://wenda.tipask.com/question/4777">期货投资心态如何炒期货《爱死磕解析》</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="RSI指标的应用原则？（爱死磕）RSI指标的操盘技巧？" href="https://wenda.tipask.com/question/4770">RSI指标的应用原则？（爱死磕）RSI指标的操盘技巧？</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="k线必涨形态图？CR指标的技巧6种" href="https://wenda.tipask.com/question/4765">k线必涨形态图？CR指标的技巧6种</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="快乐是什么意思" href="https://wenda.tipask.com/question/4759">快乐是什么意思</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="老师  左右翻页效果如何实现呢" href="https://wenda.tipask.com/question/4758">老师  左右翻页效果如何实现呢</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="asdasd" href="https://wenda.tipask.com/question/4757">asdasd</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="中小资金管理方法？做好短线的8原则爱死磕什么是期货？" href="https://wenda.tipask.com/question/4756">中小资金管理方法？做好短线的8原则爱死磕什么是期货？</a>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <span class="text-gold"><i class="fa fa-database"></i> 5</span>
+                                     <a target="_blank" title="什么是止损？(爱死磕)止损的目的？" href="https://wenda.tipask.com/question/4755">什么是止损？(爱死磕)止损的目的？</a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget-box">
+                <div class="job-list-item row">
+                    <div class="col-md-6">
+                        <h4 class="widget-box-title">热门文章 <a href="https://wenda.tipask.com/articles/all/hottest" title="更多">»</a></h4>
+                        <ul class="widget-links list-unstyled">
+                                                            <li class="widget-links-item">
+                                    <a title="Tipask3.2 发布 release 20170412" target="_blank"  href="https://wenda.tipask.com/article/45">Tipask3.2 发布 release 20170412</a>
+                                    <small class="text-muted">37408 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="Tipask3.0 web方式安装教程" target="_blank"  href="https://wenda.tipask.com/article/22">Tipask3.0 web方式安装教程</a>
+                                    <small class="text-muted">27201 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="Tipask2.6版本发布了！" target="_blank"  href="https://wenda.tipask.com/article/16">Tipask2.6版本发布了！</a>
+                                    <small class="text-muted">17481 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="Tipask3.0正式版本发布！" target="_blank"  href="https://wenda.tipask.com/article/34">Tipask3.0正式版本发布！</a>
+                                    <small class="text-muted">13011 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="全新的社区版Tipask3.0beta来了！" target="_blank"  href="https://wenda.tipask.com/article/11">全新的社区版Tipask3.0beta来了！</a>
+                                    <small class="text-muted">12612 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="Tipask3.0beta安装教程，我们一起来搭建问答平台。" target="_blank"  href="https://wenda.tipask.com/article/10">Tipask3.0beta安装教程，我们一起来搭建问答平台。</a>
+                                    <small class="text-muted">8568 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="社区问答3.0首页模版的建议" target="_blank"  href="https://wenda.tipask.com/article/19">社区问答3.0首页模版的建议</a>
+                                    <small class="text-muted">5266 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="Tipask3.0beta版本更新 release 20160611" target="_blank"  href="https://wenda.tipask.com/article/23">Tipask3.0beta版本更新 release 20160611</a>
+                                    <small class="text-muted">4689 浏览</small>
+                                </li>
+                                                    </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="widget-box-title">最新文章 <a href="https://wenda.tipask.com/articles/all/newest" title="更多">»</a></h4>
+                        <ul class="widget-links list-unstyled">
+                                                            <li class="widget-links-item">
+                                    <a title="你的SEO效果不明显的原因分析" target="_blank"  href="https://wenda.tipask.com/article/5282">你的SEO效果不明显的原因分析</a>
+                                    <small class="text-muted">71 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="tipask模板目录对照表自己写着玩的 勿喷！" target="_blank"  href="https://wenda.tipask.com/article/5204">tipask模板目录对照表自己写着玩的 勿喷！</a>
+                                    <small class="text-muted">507 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="使用PJAX实现Tipask全站无刷新。" target="_blank"  href="https://wenda.tipask.com/article/5200">使用PJAX实现Tipask全站无刷新。</a>
+                                    <small class="text-muted">414 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="一个牛逼思路的实现。" target="_blank"  href="https://wenda.tipask.com/article/5184">一个牛逼思路的实现。</a>
+                                    <small class="text-muted">344 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="Laravel 5 性能优化技巧" target="_blank"  href="https://wenda.tipask.com/article/5168">Laravel 5 性能优化技巧</a>
+                                    <small class="text-muted">761 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="xunserach安装成功全过程分享" target="_blank"  href="https://wenda.tipask.com/article/5158">xunserach安装成功全过程分享</a>
+                                    <small class="text-muted">784 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="内容付费系统帮助内容创业者提供了什么？" target="_blank"  href="https://wenda.tipask.com/article/5156">内容付费系统帮助内容创业者提供了什么？</a>
+                                    <small class="text-muted">698 浏览</small>
+                                </li>
+                                                            <li class="widget-links-item">
+                                    <a title="编辑器添加图片居中功能" target="_blank"  href="https://wenda.tipask.com/article/5151">编辑器添加图片居中功能</a>
+                                    <small class="text-muted">782 浏览</small>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+            </div>
+
+                        <div class="widget-box clearfix">
+                <h4 class="widget-box-title">推荐专家 <a href="https://wenda.tipask.com/experts" title="更多">»</a></h4>
+                <div class="row row-horizon">
+                                            <section class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="https://wenda.tipask.com/people/1" target="_blank"><img class="avatar-128" src="/static/index/tipask/picture/1_big.jpg" alt="宋登峰"></a>
+                                <div class="caption">
+                                    <h4 class="text-center"><a href="https://wenda.tipask.com/people/1" title="宋登峰">宋登峰</a></h4>
+                                    <p class="text-muted text-center" title="tipask技术经理">tipask技术经理&nbsp;</p>
+                                    <p class="text-center"><a class="btn btn-primary btn-sm" href="https://wenda.tipask.com/question/create?to_user_id=1">向TA提问</a></p>
+                                </div>
+                            </div>
+                        </section>
+                                            <section class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="https://wenda.tipask.com/people/346" target="_blank"><img class="avatar-128" src="/static/index/tipask/picture/346_big.jpg" alt="郑飞"></a>
+                                <div class="caption">
+                                    <h4 class="text-center"><a href="https://wenda.tipask.com/people/346" title="郑飞">郑飞</a></h4>
+                                    <p class="text-muted text-center" title="资深前端开发	">资深前端开发	&nbsp;</p>
+                                    <p class="text-center"><a class="btn btn-primary btn-sm" href="https://wenda.tipask.com/question/create?to_user_id=346">向TA提问</a></p>
+                                </div>
+                            </div>
+                        </section>
+                                            <section class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="https://wenda.tipask.com/people/192" target="_blank"><img class="avatar-128" src="/static/index/tipask/picture/192_big.jpg" alt="钟云勇"></a>
+                                <div class="caption">
+                                    <h4 class="text-center"><a href="https://wenda.tipask.com/people/192" title="钟云勇">钟云勇</a></h4>
+                                    <p class="text-muted text-center" title="php爱好者">php爱好者&nbsp;</p>
+                                    <p class="text-center"><a class="btn btn-primary btn-sm" href="https://wenda.tipask.com/question/create?to_user_id=192">向TA提问</a></p>
+                                </div>
+                            </div>
+                        </section>
+                                            <section class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="https://wenda.tipask.com/people/2981" target="_blank"><img class="avatar-128" src="/static/index/tipask/picture/2981_big.jpg" alt="田菲"></a>
+                                <div class="caption">
+                                    <h4 class="text-center"><a href="https://wenda.tipask.com/people/2981" title="田菲">田菲</a></h4>
+                                    <p class="text-muted text-center" title="php爱好者">php爱好者&nbsp;</p>
+                                    <p class="text-center"><a class="btn btn-primary btn-sm" href="https://wenda.tipask.com/question/create?to_user_id=2981">向TA提问</a></p>
+                                </div>
+                            </div>
+                        </section>
+                                            <section class="col-sm-6 col-md-3">
+                            <div class="thumbnail">
+                                <a href="https://wenda.tipask.com/people/3285" target="_blank"><img class="avatar-128" src="/static/index/tipask/picture/3285_big.jpg" alt="李美林"></a>
+                                <div class="caption">
+                                    <h4 class="text-center"><a href="https://wenda.tipask.com/people/3285" title="李美林">李美林</a></h4>
+                                    <p class="text-muted text-center" title="PHP开发">PHP开发&nbsp;</p>
+                                    <p class="text-center"><a class="btn btn-primary btn-sm" href="https://wenda.tipask.com/question/create?to_user_id=3285">向TA提问</a></p>
+                                </div>
+                            </div>
+                        </section>
+                                    </div>
+            </div>
+            
+        </div>
+        <div class="col-md-3 hidden-xs side">
+            <div class="side-alert alert alert-link">
+                <a href="https://wenda.tipask.com/question/create" class="btn btn-warning btn-block">我要提问</a>
+                <a href="https://wenda.tipask.com/article/create" class="btn btn-primary btn-block">分享经验</a>
+            </div>
+                        <div class="side-sign alert alert-link">
+                <ul class="sign-box">
+                                        <dt><a href="https://wenda.tipask.com/sign" class="btn btn-primary btn-large">签&nbsp;&nbsp;到</a></dt>
+                                        <dd>
+                        <p>2017-12-24</p>
+                        <p>星期天</p>
+                    </dd>
+                </ul>
+            </div>
+                                    <div class="widget-box">
+                <h4 class="widget-box-title">最新公告</h4>
+                <ul class="widget-links list-unstyled">
+                                        <li class="widget-links-item">
+                        <a title="Tipask3.2 发布 release 20170412" href="http://wenda.tipask.com/article/45">Tipask3.2 发布 release 20170412</a>
+                    </li>
+                                        <li class="widget-links-item">
+                        <a title="Tipask3.0正式版发布！" href="http://wenda.tipask.com/article/34">Tipask3.0正式版发布！</a>
+                    </li>
+                                        <li class="widget-links-item">
+                        <a title="行家招募令，大牛快来认证吧！" href="http://wenda.tipask.com/article/8">行家招募令，大牛快来认证吧！</a>
+                    </li>
+                                        <li class="widget-links-item">
+                        <a title="Tipask3.0更新 release 20160611" href="http://wenda.tipask.com/article/23">Tipask3.0更新 release 20160611</a>
+                    </li>
+                                        <li class="widget-links-item">
+                        <a title="Tipask2.6版本发布!" href="http://wenda.tipask.com/article/16">Tipask2.6版本发布!</a>
+                    </li>
+                                    </ul>
+            </div>
+
+            <div class="widget-box">
+                <h2 class="h4 widget-box-title">热议话题 <a href="https://wenda.tipask.com/topics" title="更多">»</a></h2>
+                <ul class="taglist-inline multi">
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/193" target="_blank">电影</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/35" target="_blank">程序安装</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/108" target="_blank">程序使用</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/658" target="_blank">理财投资</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/1417" target="_blank">黄金 原油</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/474" target="_blank">操作建议</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/1334" target="_blank">外汇理财</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/14" target="_blank">SEO</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/39" target="_blank">编辑器</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/38" target="_blank">二次开发</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/638" target="_blank">bug反馈</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/33" target="_blank">tipask3.0</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/444" target="_blank">理财</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/44" target="_blank">Tipask2.6</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/95" target="_blank">bug</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/851" target="_blank">跨境电商</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/100" target="_blank">功能建议</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/54" target="_blank">tipask 3.0</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/1418" target="_blank">黄金 外汇</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/21" target="_blank">建议</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/37" target="_blank">tipask</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/29" target="_blank">数据库</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/75" target="_blank">程序开发</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/1445" target="_blank">爱死磕</a></li>
+                                        <li class="tagPopup"><a class="tag" data-toggle="popover"  href="https://wenda.tipask.com/topic/61" target="_blank">伪静态</a></li>
+                                    </ul>
+            </div>
+
+            <div class="widget-box mt30">
+                <h2 class="widget-box-title">
+                    财富榜
+                    <a href="https://wenda.tipask.com/top/coins" title="更多">»</a>
+                </h2>
+                <ol class="widget-top10">
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/1_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/1" class="ellipsis" target="_blank">sdf_sky</a>
+                        <span class="text-muted pull-right">1202 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/454_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/454" class="ellipsis" target="_blank">楚门</a>
+                        <span class="text-muted pull-right">109 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/331_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/331" class="ellipsis" target="_blank">望月的人</a>
+                        <span class="text-muted pull-right">85 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/604_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/604" class="ellipsis" target="_blank">评美帮</a>
+                        <span class="text-muted pull-right">56 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/2629_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/2629" class="ellipsis" target="_blank">九天</a>
+                        <span class="text-muted pull-right">55 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/2316_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/2316" class="ellipsis" target="_blank">大聖</a>
+                        <span class="text-muted pull-right">43 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/2427_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/2427" class="ellipsis" target="_blank">萨思网络</a>
+                        <span class="text-muted pull-right">40 金币</span>
+                    </li>
+                                        <li class="text-muted">
+                        <img class="avatar-32" src="/static/index/tipask/picture/1543_middle.jpg">
+                        <a href="https://wenda.tipask.com/people/1543" class="ellipsis" target="_blank">AICE宽大守信</a>
+                        <span class="text-muted pull-right">35 金币</span>
+                    </li>
+                                    </ol>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+
+
+<footer id="footer">
+    <div class="container">
+                <ul class="list-unstyled list-inline">
+            <li>友情链接</li>
+                        <li><a target="_blank" href="https://www.tipask.com" title="做中国最好的开源问答系统">Tipask官网</a></li>
+                        <li><a target="_blank" href="http://www.meitangwan.com/" title="纯粹、高质的美签交流社区">美唐湾</a></li>
+                        <li><a target="_blank" href="http://wenda.zbmf.com/" title="">指标大师</a></li>
+                        <li><a target="_blank" href="http://www.moeask.cn/" title="你的二次元&ldquo;知乎&rdquo;">萌新问答</a></li>
+                        <li><a target="_blank" href="http://ask.testroad.org/" title="鲁德最专业的软件测试平台">鲁德问答平台</a></li>
+                        <li><a target="_blank" href="http://ask.testfan.cn" title="">Testfan</a></li>
+                        <li><a target="_blank" href="http://help.antfanli.cn/" title="">蚂蚁返利</a></li>
+                    </ul>
+                <div class="text-center">
+            <a href="https://wenda.tipask.com">Tipask站长社区</a><span class="span-line">|</span>
+            <a href="mailto:songdengfeng@tipask.com" target="_blank">联系我们</a><span class="span-line">|</span>
+                        <a href="http://www.miibeian.gov.cn" target="_blank">京ICP备16041226号-3</a>
+                    </div>
+        <div class="copyright mt-10">
+            Powered By <a href="http://www.tipask.com" target="_blank">Tipask3.2</a> Release 20170925 ©2009-2017 tipask.com
+        </div>
+    </div>
+</footer>
+
+
+<div class="modal fade" id="sendTo_message_model" tabindex="-1"  role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">发送私信</h4>
+            </div>
+            <div class="modal-body">
+                <form name="messageForm" id="sendTo_message_form">
+                    <input type="hidden"  name="_token" value="9eXunl4QKfFKf3BftinEr5yYxk5A338UTo7uy8or">
+                    <input type="hidden" id="to_user_id" name="to_user_id" value="0" />
+                    <div class="form-group">
+                        <label for="to_user_name" class="control-label">发给:</label>
+                        <span id="to_user_name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">内容:</label>
+                        <textarea class="form-control" id="message-text" name="content"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="sendTo_submit">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/index/tipask/js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/index/tipask/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var is_login = Boolean("");
+</script>
+<script src="/static/index/tipask/js/global.js"></script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script src="/static/index/tipask/js/jquery.share.min.js"></script>
+
+</body>
+</html>
